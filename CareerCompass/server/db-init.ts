@@ -1,0 +1,354 @@
+import { db } from './db';
+import { careerQuizzes, resumeTemplates } from '@shared/schema';
+import { sql } from 'drizzle-orm';
+
+// Initialize database with seed data
+export async function initializeDatabase() {
+  try {
+    console.log('Starting database initialization...');
+    console.log('Connected to PostgreSQL database');
+    
+    // Skip migrations completely since tables already exist
+    
+    // Force seed default quizzes - Always insert if count is less than 2
+    console.log('Seeding career quizzes...');
+    const existingQuizzes = await db.select({ count: sql`count(*)` }).from(careerQuizzes);
+    console.log('Existing quizzes count:', existingQuizzes[0]?.count);
+    
+    if (!existingQuizzes[0] || parseInt(existingQuizzes[0].count as string) < 2) {
+      console.log('No quizzes found or count is less than 2, seeding...');
+      
+      // Delete existing quizzes to start fresh
+      if (parseInt(existingQuizzes[0]?.count as string) > 0) {
+        await db.delete(careerQuizzes);
+        console.log('Cleared existing quizzes');
+      }
+      
+      // Add General Career Interest Profiler
+      const defaultQuiz = {
+        title: "General Career Interest Profiler",
+        description: "Focus on soft skills, leadership, creativity, and business-related roles",
+        questions: [
+          {
+            id: 1,
+            text: "I enjoy solving complex problems and analyzing data.",
+            options: [
+              { id: 1, text: "Strongly Disagree" },
+              { id: 2, text: "Disagree" },
+              { id: 3, text: "Neutral" },
+              { id: 4, text: "Agree" },
+              { id: 5, text: "Strongly Agree" }
+            ]
+          },
+          {
+            id: 2,
+            text: "I prefer working with people rather than with things.",
+            options: [
+              { id: 1, text: "Strongly Disagree" },
+              { id: 2, text: "Disagree" },
+              { id: 3, text: "Neutral" },
+              { id: 4, text: "Agree" },
+              { id: 5, text: "Strongly Agree" }
+            ]
+          },
+          {
+            id: 3,
+            text: "I enjoy creative activities like writing, design, or art.",
+            options: [
+              { id: 1, text: "Strongly Disagree" },
+              { id: 2, text: "Disagree" },
+              { id: 3, text: "Neutral" },
+              { id: 4, text: "Agree" },
+              { id: 5, text: "Strongly Agree" }
+            ]
+          },
+          {
+            id: 4,
+            text: "I am comfortable taking leadership roles.",
+            options: [
+              { id: 1, text: "Strongly Disagree" },
+              { id: 2, text: "Disagree" },
+              { id: 3, text: "Neutral" },
+              { id: 4, text: "Agree" },
+              { id: 5, text: "Strongly Agree" }
+            ]
+          },
+          {
+            id: 5,
+            text: "I enjoy learning about how technology works.",
+            options: [
+              { id: 1, text: "Strongly Disagree" },
+              { id: 2, text: "Disagree" },
+              { id: 3, text: "Neutral" },
+              { id: 4, text: "Agree" },
+              { id: 5, text: "Strongly Agree" }
+            ]
+          },
+          {
+            id: 6,
+            text: "I am detail-oriented and enjoy organizing things methodically.",
+            options: [
+              { id: 1, text: "Strongly Disagree" },
+              { id: 2, text: "Disagree" },
+              { id: 3, text: "Neutral" },
+              { id: 4, text: "Agree" },
+              { id: 5, text: "Strongly Agree" }
+            ]
+          },
+          {
+            id: 7,
+            text: "I'm comfortable with public speaking and presenting to groups.",
+            options: [
+              { id: 1, text: "Strongly Disagree" },
+              { id: 2, text: "Disagree" },
+              { id: 3, text: "Neutral" },
+              { id: 4, text: "Agree" },
+              { id: 5, text: "Strongly Agree" }
+            ]
+          },
+          {
+            id: 8,
+            text: "I enjoy helping others learn new things or develop skills.",
+            options: [
+              { id: 1, text: "Strongly Disagree" },
+              { id: 2, text: "Disagree" },
+              { id: 3, text: "Neutral" },
+              { id: 4, text: "Agree" },
+              { id: 5, text: "Strongly Agree" }
+            ]
+          },
+          {
+            id: 9,
+            text: "I like to work with numbers and analyze financial information.",
+            options: [
+              { id: 1, text: "Strongly Disagree" },
+              { id: 2, text: "Disagree" },
+              { id: 3, text: "Neutral" },
+              { id: 4, text: "Agree" },
+              { id: 5, text: "Strongly Agree" }
+            ]
+          },
+          {
+            id: 10,
+            text: "I enjoy watching market trends and analyzing consumer behavior.",
+            options: [
+              { id: 1, text: "Strongly Disagree" },
+              { id: 2, text: "Disagree" },
+              { id: 3, text: "Neutral" },
+              { id: 4, text: "Agree" },
+              { id: 5, text: "Strongly Agree" }
+            ]
+          },
+          {
+            id: 11,
+            text: "I'm good at persuading others and negotiating.",
+            options: [
+              { id: 1, text: "Strongly Disagree" },
+              { id: 2, text: "Disagree" },
+              { id: 3, text: "Neutral" },
+              { id: 4, text: "Agree" },
+              { id: 5, text: "Strongly Agree" }
+            ]
+          },
+          {
+            id: 12,
+            text: "I enjoy writing code or creating digital solutions to problems.",
+            options: [
+              { id: 1, text: "Strongly Disagree" },
+              { id: 2, text: "Disagree" },
+              { id: 3, text: "Neutral" },
+              { id: 4, text: "Agree" },
+              { id: 5, text: "Strongly Agree" }
+            ]
+          },
+          {
+            id: 13,
+            text: "I'm interested in human psychology and understanding behavior.",
+            options: [
+              { id: 1, text: "Strongly Disagree" },
+              { id: 2, text: "Disagree" },
+              { id: 3, text: "Neutral" },
+              { id: 4, text: "Agree" },
+              { id: 5, text: "Strongly Agree" }
+            ]
+          },
+          {
+            id: 14,
+            text: "I enjoy managing projects and coordinating different teams.",
+            options: [
+              { id: 1, text: "Strongly Disagree" },
+              { id: 2, text: "Disagree" },
+              { id: 3, text: "Neutral" },
+              { id: 4, text: "Agree" },
+              { id: 5, text: "Strongly Agree" }
+            ]
+          },
+          {
+            id: 15,
+            text: "I like to work with visual design and user experiences.",
+            options: [
+              { id: 1, text: "Strongly Disagree" },
+              { id: 2, text: "Disagree" },
+              { id: 3, text: "Neutral" },
+              { id: 4, text: "Agree" },
+              { id: 5, text: "Strongly Agree" }
+            ]
+          }
+        ]
+      };
+      
+      // Add tech-focused career quiz
+      const techQuiz = {
+        title: "Technology Career Path Assessment",
+        description: "Focus on programming, AI, cybersecurity, web development, and emerging tech fields",
+        questions: [
+          {
+            id: 1,
+            text: "I enjoy solving logic puzzles and complex problems.",
+            options: [
+              { id: 1, text: "Strongly Disagree" },
+              { id: 2, text: "Disagree" },
+              { id: 3, text: "Neutral" },
+              { id: 4, text: "Agree" },
+              { id: 5, text: "Strongly Agree" }
+            ]
+          },
+          {
+            id: 2,
+            text: "I am interested in how software applications are built.",
+            options: [
+              { id: 1, text: "Strongly Disagree" },
+              { id: 2, text: "Disagree" },
+              { id: 3, text: "Neutral" },
+              { id: 4, text: "Agree" },
+              { id: 5, text: "Strongly Agree" }
+            ]
+          },
+          {
+            id: 3,
+            text: "I enjoy working with visual design and user interfaces.",
+            options: [
+              { id: 1, text: "Strongly Disagree" },
+              { id: 2, text: "Disagree" },
+              { id: 3, text: "Neutral" },
+              { id: 4, text: "Agree" },
+              { id: 5, text: "Strongly Agree" }
+            ]
+          },
+          {
+            id: 4,
+            text: "I like analyzing data and finding patterns or insights.",
+            options: [
+              { id: 1, text: "Strongly Disagree" },
+              { id: 2, text: "Disagree" },
+              { id: 3, text: "Neutral" },
+              { id: 4, text: "Agree" },
+              { id: 5, text: "Strongly Agree" }
+            ]
+          },
+          {
+            id: 5,
+            text: "I'm interested in cybersecurity and protecting digital assets.",
+            options: [
+              { id: 1, text: "Strongly Disagree" },
+              { id: 2, text: "Disagree" },
+              { id: 3, text: "Neutral" },
+              { id: 4, text: "Agree" },
+              { id: 5, text: "Strongly Agree" }
+            ]
+          },
+          {
+            id: 6,
+            text: "I enjoy learning new programming languages or technical skills.",
+            options: [
+              { id: 1, text: "Strongly Disagree" },
+              { id: 2, text: "Disagree" },
+              { id: 3, text: "Neutral" },
+              { id: 4, text: "Agree" },
+              { id: 5, text: "Strongly Agree" }
+            ]
+          },
+          {
+            id: 7,
+            text: "I like bridging the gap between technical and non-technical people.",
+            options: [
+              { id: 1, text: "Strongly Disagree" },
+              { id: 2, text: "Disagree" },
+              { id: 3, text: "Neutral" },
+              { id: 4, text: "Agree" },
+              { id: 5, text: "Strongly Agree" }
+            ]
+          },
+          {
+            id: 8,
+            text: "I enjoy optimizing systems for better performance.",
+            options: [
+              { id: 1, text: "Strongly Disagree" },
+              { id: 2, text: "Disagree" },
+              { id: 3, text: "Neutral" },
+              { id: 4, text: "Agree" },
+              { id: 5, text: "Strongly Agree" }
+            ]
+          },
+          {
+            id: 9,
+            text: "I'm comfortable with mathematics and statistical concepts.",
+            options: [
+              { id: 1, text: "Strongly Disagree" },
+              { id: 2, text: "Disagree" },
+              { id: 3, text: "Neutral" },
+              { id: 4, text: "Agree" },
+              { id: 5, text: "Strongly Agree" }
+            ]
+          },
+          {
+            id: 10,
+            text: "I enjoy managing technology projects and team coordination.",
+            options: [
+              { id: 1, text: "Strongly Disagree" },
+              { id: 2, text: "Disagree" },
+              { id: 3, text: "Neutral" },
+              { id: 4, text: "Agree" },
+              { id: 5, text: "Strongly Agree" }
+            ]
+          }
+        ]
+      };
+      
+      await db.insert(careerQuizzes).values([defaultQuiz, techQuiz]);
+      console.log('Career quizzes seeded');
+    } else {
+      console.log('Career quizzes already exist, skipping seed');
+    }
+    
+    // Seed resume templates
+    console.log('Seeding resume templates...');
+    const existingTemplates = await db.select({ count: sql`count(id)` }).from(resumeTemplates);
+    
+    if (!existingTemplates[0] || existingTemplates[0].count === 0) {
+      const templates = [
+        {
+          name: "Modern Template",
+          description: "Clean and professional design",
+          template: "modern_template"
+        },
+        {
+          name: "Creative Template",
+          description: "Showcase your creative talents",
+          template: "creative_template"
+        }
+      ];
+      
+      await db.insert(resumeTemplates).values(templates);
+      console.log('Resume templates seeded');
+    } else {
+      console.log('Resume templates already exist, skipping seed');
+    }
+    
+    console.log('Database initialization completed successfully.');
+    return true;
+  } catch (error) {
+    console.error('Error initializing database:', error);
+    throw error;
+  }
+}

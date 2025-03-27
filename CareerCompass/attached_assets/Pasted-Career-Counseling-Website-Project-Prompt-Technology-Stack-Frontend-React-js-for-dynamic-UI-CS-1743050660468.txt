@@ -1,0 +1,74 @@
+Career Counseling Website – Project Prompt
+Technology Stack:
+Frontend: React.js (for dynamic UI), CSS (for styling), JavaScript (for interactivity & animations)
+
+Backend: Node.js with Express.js (for handling API requests)
+
+Database: PostgreSQL (for user management and data storage)
+
+Project Overview:
+This career counseling platform will help students with career guidance by providing career quizzes, resume-building resources, an AI chatbot, and an admin panel for managing user data.
+
+The website will have a static navbar and a modern, stylish design with smooth animations, ensuring an intuitive and engaging user experience.
+
+Key Features:
+1. Landing Page (Homepage) – Simple & Engaging
+A visually appealing modern UI with a static navbar.
+
+A. Hero Section (Top Banner & CTA)
+A large animated banner with a tagline like:
+“Find Your Perfect Career Path!”
+
+CTA Buttons:
+
+"Start Your Journey" → Directs to Sign-Up
+
+"Learn More" → Scrolls to Features
+
+B. Features Overview (Minimal & Icon-Based)
+Career Quiz – Discover suitable career paths
+
+AI Chatbot – Get career-related help
+
+Resume Tips – Learn to create a strong resume
+
+C. Dark Mode & Light Mode Toggle
+Users can switch between themes
+
+2. User Authentication (Secure & Simple)
+Sign-Up – Register with email & password
+
+Login – Access dashboard
+
+Forgot Password – Reset via email
+
+3. Dashboard (User Panel – After Login)
+A clean and minimal dashboard with essential features.
+
+A. Career Quiz (Short & Personalized)
+A quick quiz that suggests career paths based on answers
+
+B. Resume-Building Tips
+Basic guides and templates for creating a professional resume
+
+C. AI Chatbot (Career Assistance)
+Integrated AI chatbot (OpenRouter API) for career-related queries
+
+D. Profile Section
+Users can view and update their profile details
+
+4. Admin Panel (For Managing Users & Data)
+User Management: View, edit, and delete user profiles
+
+Activity Logs: Track user interactions (quiz results, chatbot usage, etc.)
+
+Data Management: Access and manage stored PostgreSQL data
+
+5. Fully Responsive Design
+Works smoothly on mobile, tablet, and desktop
+
+Development Rules:
+✅ The website must be fully functional and minimal.
+✅ Tech Stack: React.js (Frontend), Node.js + Express.js (Backend), PostgreSQL (Database)
+✅ Static navbar with a modern, stylish UI and smooth animations.
+✅ Admin panel for managing user data and interactions.

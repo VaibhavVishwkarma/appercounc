@@ -1,0 +1,47 @@
+
+vaibh@INBOOK_X2_PLUS MINGW64 ~/Downloads/CareerCompass (1)
+$ npm install
+npm warn deprecated @esbuild-kit/esm-loader@2.6.5: Merged into tsx: https://tsx.is
+npm warn deprecated @esbuild-kit/core-utils@3.3.2: Merged into tsx: https://tsx.is
+
+added 581 packages, and audited 582 packages in 6m
+
+131 packages are looking for funding
+  run `npm fund` for details
+
+5 moderate severity vulnerabilities
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+
+vaibh@INBOOK_X2_PLUS MINGW64 ~/Downloads/CareerCompass (1)
+$ npm run dev
+
+> rest-express@1.0.0 dev
+> tsx server/index.ts
+
+
+node:internal/modules/run_main:122
+    triggerUncaughtException(
+    ^
+Error [ERR_MODULE_NOT_FOUND]: Cannot find module 'C:\Users\vaibh\Downloads\CareerCompass (1)\server\index.ts' imported from C:\Users\vaibh\Downloads\CareerCompass (1)\
+    at finalizeResolution (node:internal/modules/esm/resolve:275:11)
+    at moduleResolve (node:internal/modules/esm/resolve:860:10)
+    at defaultResolve (node:internal/modules/esm/resolve:984:11)
+    at nextResolve (node:internal/modules/esm/hooks:748:28)
+    at resolveBase (file:///C:/Users/vaibh/Downloads/CareerCompass%20(1)/node_modules/tsx/dist/esm/index.mjs?1743073400324:2:3212)
+    at resolveDirectory (file:///C:/Users/vaibh/Downloads/CareerCompass%20(1)/node_modules/tsx/dist/esm/index.mjs?1743073400324:2:3584)
+    at resolveTsPaths (file:///C:/Users/vaibh/Downloads/CareerCompass%20(1)/node_modules/tsx/dist/esm/index.mjs?1743073400324:2:4073)
+    at resolve (file:///C:/Users/vaibh/Downloads/CareerCompass%20(1)/node_modules/tsx/dist/esm/index.mjs?1743073400324:2:4447)
+    at nextResolve (node:internal/modules/esm/hooks:748:28)
+    at Hooks.resolve (node:internal/modules/esm/hooks:240:30) {
+  code: 'ERR_MODULE_NOT_FOUND',
+  url: 'file:///C:/Users/vaibh/Downloads/CareerCompass%20(1)/server/index.ts'
+}
+
+Node.js v22.14.0
+
+vaibh@INBOOK_X2_PLUS MINGW64 ~/Downloads/CareerCompass (1)
+$

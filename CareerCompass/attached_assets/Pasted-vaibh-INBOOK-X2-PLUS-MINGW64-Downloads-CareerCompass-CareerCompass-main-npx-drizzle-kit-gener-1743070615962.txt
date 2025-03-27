@@ -1,0 +1,90 @@
+vaibh@INBOOK_X2_PLUS MINGW64 ~/Downloads/CareerCompass/CareerCompass (main)
+$ npx drizzle-kit generate
+npm run db:push
+No config path provided, using default 'drizzle.config.ts'
+Reading config file 'C:\Users\vaibh\Downloads\CareerCompass\CareerCompass\drizzle.config.ts'
+5 tables
+career_quizzes 4 columns 0 indexes 0 fks
+chat_sessions 5 columns 0 indexes 1 fks
+quiz_results 6 columns 0 indexes 2 fks
+resume_templates 4 columns 0 indexes 0 fks
+users 7 columns 0 indexes 0 fks
+
+No schema changes, nothing to migrate 😴
+
+> rest-express@1.0.0 db:push
+> drizzle-kit push
+
+No config path provided, using default 'drizzle.config.ts'
+Reading config file 'C:\Users\vaibh\Downloads\CareerCompass\CareerCompass\drizzle.config.ts'
+Using 'pg' driver for database querying
+[✓] Pulling schema from database...
+[✓] Changes applied
+
+vaibh@INBOOK_X2_PLUS MINGW64 ~/Downloads/CareerCompass/CareerCompass (main)
+$ npm run dev
+
+> rest-express@1.0.0 dev
+> tsx server/index.ts
+
+3:46:33 PM [express] Initializing database...
+Starting database initialization...
+Running migrations...
+Connected to PostgreSQL database
+Error initializing database: error: relation "career_quizzes" already exists
+    at C:\Users\vaibh\Downloads\CareerCompass\CareerCompass\node_modules\pg\lib\client.js:545:17
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (C:\Users\vaibh\Downloads\CareerCompass\CareerCompass\node_modules\src\pg-core\dialect.ts:102:7)
+    at async NodePgSession.transaction (C:\Users\vaibh\Downloads\CareerCompass\CareerCompass\node_modules\src\node-postgres\session.ts:193:19)
+    at async PgDialect.migrate (C:\Users\vaibh\Downloads\CareerCompass\CareerCompass\node_modules\src\pg-core\dialect.ts:95:3)
+    at async migrate (C:\Users\vaibh\Downloads\CareerCompass\CareerCompass\node_modules\src\node-postgres\migrator.ts:10:2)
+    at async initializeDatabase (C:\Users\vaibh\Downloads\CareerCompass\CareerCompass\server\db-init.ts:13:5)        
+    at async <anonymous> (C:\Users\vaibh\Downloads\CareerCompass\CareerCompass\server\index.ts:48:5) {
+  length: 108,
+  severity: 'ERROR',
+  code: '42P07',
+  detail: undefined,
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'heap.c',
+  line: '1161',
+  routine: 'heap_create_with_catalog'
+}
+Failed to start server: error: relation "career_quizzes" already exists
+    at C:\Users\vaibh\Downloads\CareerCompass\CareerCompass\node_modules\pg\lib\client.js:545:17
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (C:\Users\vaibh\Downloads\CareerCompass\CareerCompass\node_modules\src\pg-core\dialect.ts:102:7)
+    at async NodePgSession.transaction (C:\Users\vaibh\Downloads\CareerCompass\CareerCompass\node_modules\src\node-postgres\session.ts:193:19)
+    at async PgDialect.migrate (C:\Users\vaibh\Downloads\CareerCompass\CareerCompass\node_modules\src\pg-core\dialect.ts:95:3)
+    at async migrate (C:\Users\vaibh\Downloads\CareerCompass\CareerCompass\node_modules\src\node-postgres\migrator.ts:10:2)
+    at async initializeDatabase (C:\Users\vaibh\Downloads\CareerCompass\CareerCompass\server\db-init.ts:13:5)        
+    at async <anonymous> (C:\Users\vaibh\Downloads\CareerCompass\CareerCompass\server\index.ts:48:5) {
+  length: 108,
+  severity: 'ERROR',
+  code: '42P07',
+  detail: undefined,
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'heap.c',
+  line: '1161',
+  routine: 'heap_create_with_catalog'
+}
+
+vaibh@INBOOK_X2_PLUS MINGW64 ~/Downloads/CareerCompass/CareerCompass (main)
+$
